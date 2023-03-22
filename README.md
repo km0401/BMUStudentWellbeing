@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# BMU Student Wellbeing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application to transform University's Student Wellbeing management.
 
 ## Available Scripts
 
