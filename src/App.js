@@ -16,7 +16,7 @@ class App extends Component{
     }}>
 <Header/>
 <HeroBanner/>
-{/* <BlogCarousel/> */}
+<BlogCarousel/>
 </Auth0Provider>
       )
     }
