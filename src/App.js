@@ -4,6 +4,7 @@ import HeroBanner from './HeroBanner';
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Box } from '@mui/material';
 import BlogCarousel from './BlogCarousel';
+import AboutUs from './About Us';
 // import BlogCard from './BlogCard';
 
 class App extends Component{
@@ -16,6 +17,7 @@ class App extends Component{
     }}>
 <Header/>
 <HeroBanner/>
+<AboutUs/>
 <BlogCarousel/>
 </Auth0Provider>
       )
