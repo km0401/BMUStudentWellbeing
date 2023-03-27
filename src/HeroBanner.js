@@ -38,7 +38,7 @@ function HeroBanner() {
   return (
 <ThemeProvider theme={theme}>
 <Box>
-    <Grid container sx={{padding:{md:'50px 80px',xs:'50px 50px'}}} spacing={1}>
+    <Grid container sx={{padding:{md:'50px 80px',xs:'50px 50px'},textAlign:{xs:'center',md:'start'}}} spacing={1}>
     <Grid item xs={12} md={5}>
         <Box sx={{borderRadius:'8px',textAlign:'center',backgroundColor:'#E5ECFA',color:'#907BFF',padding:'5px 30px',width:{sm:'320px',xs:'250px'},margin:{md:'0 0 10px 0',xs:'0 auto 10px auto'}}}>
         <Typography variant="subtitle2" sx={{fontSize:'13px',fontWeight:'600'}}>BML Munjal University Student Wellbeing Centre</Typography>

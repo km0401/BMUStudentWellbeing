@@ -19,7 +19,7 @@ function AboutUs() {
     <Typography variant="h4" style={{fontWeight:'600',textAlign:'center'}}>About Us</Typography>
     </Box>
     <Grid container spacing={2} sx={{justifyContent:'space-between', marginBottom:'50px', textAlign:{xs:'center',md:'left'}}}>
-        <Grid item xs={12} md={5} sx={{margin:{xs:'60px 0 ',md:'0 0 0 50px'}}}>
+        <Grid item xs={12} md={4} sx={{margin:{xs:'60px 0 ',md:'0 0 0 50px'}}}>
         <img src={aboutUsImage} alt="about-us-svg"/>
         </Grid>
         <Grid item xs={12} md={6} sx={{margin:{xs:'0 40px', md:'50px 50px 0 0'}}}>
