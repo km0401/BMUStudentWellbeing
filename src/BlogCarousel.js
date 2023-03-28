@@ -3,8 +3,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import BlogCard from './BlogCard';
 import blogimage from "./assets/bml-color-logo.svg";
-import Typography from '@mui/material/Typography'
-import { Box } from '@mui/system';
 
 const cslide1 = [
   {
@@ -55,60 +53,18 @@ const cslide2 =[
 
 function BlogCarousel() {
   return (
-    <>
-      <Box>
-        <Typography
-          variant='h4'
-          style={{ fontWeight: 600, textAlign: 'center', margin:'20px 0px 10px 0px' }}
-        >
-          Blogs
-        </Typography>
-      </Box>
-      <Carousel
-        showStatus={false}
-        showArrows={false}
-        emulateTouch
-        swipeable
-        infiniteLoop
-        autoPlay
-        interval={3000}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            marginBottom: '30px',
-          }}
-        >
-          {cslide1.map((each, i) => (
-            <BlogCard
-              title={each.title}
-              content={each.content}
-              bimage={each.blogimg}
-              key={i}
-            />
-          ))}
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            marginBottom: '30px',
-          }}
-        >
-          {cslide2.map((each, i) => (
-            <BlogCard
-              title={each.title}
-              content={each.content}
-              bimage={each.blogimg}
-              key={i}
-            />
-          ))}
-        </div>
-      </Carousel>
-    </>
+    <Carousel showStatus={false} showArrows={false} emulateTouch swipeable infiniteLoop autoPlay interval={3000}>
+    <div style={{display:'flex',flexDirection:'row',justifyContent:'center',marginBottom:'30px'}}>
+    {cslide1.map((each,i) => (
+      <BlogCard title={each.title} content={each.content} bimage={each.blogimg} key={i}/>
+    ))}
+    </div>
+    <div style={{display:'flex',flexDirection:'row',justifyContent:'center',marginBottom:'30px'}}>
+    {cslide2.map((each,i) => (
+      <BlogCard title={each.title} content={each.content} bimage={each.blogimg} key={i}/>
+    ))}
+    </div>
+    </Carousel>
   )
 }
 
