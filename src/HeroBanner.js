@@ -58,7 +58,7 @@ function HeroBanner() {
         </Box>
         </Grid>
     <Grid item xs={12} md={5}>
-    <img src={BannerImage} sx={{width:{xs:'300px'}, height: {xs:'150px'}}}></img>
+    <img src={BannerImage} sx={{width:{xs:'300px'}, height: {xs:'150px'}}} alt='Hero Banner'></img>
     </Grid>
     </Grid>
     </Box>
