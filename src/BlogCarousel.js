@@ -3,6 +3,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import BlogCard from './BlogCard';
 import blogimage from "./assets/bml-color-logo.svg";
+import {Typography,Box} from '@mui/material'
+
 
 const cslide1 = [
   {
@@ -53,18 +55,60 @@ const cslide2 =[
 
 function BlogCarousel() {
   return (
-    <Carousel showStatus={false} showArrows={false} emulateTouch swipeable infiniteLoop autoPlay interval={3000}>
-    <div style={{display:'flex',flexDirection:'row',justifyContent:'center',marginBottom:'30px'}}>
-    {cslide1.map((each,i) => (
-      <BlogCard title={each.title} content={each.content} bimage={each.blogimg} key={i}/>
-    ))}
-    </div>
-    <div style={{display:'flex',flexDirection:'row',justifyContent:'center',marginBottom:'30px'}}>
-    {cslide2.map((each,i) => (
-      <BlogCard title={each.title} content={each.content} bimage={each.blogimg} key={i}/>
-    ))}
-    </div>
-    </Carousel>
+    <>
+      <Box>
+          <Typography
+            variant='h4'
+            style={{ fontWeight: '600', textAlign: 'center', marginTop:80 }}
+          >
+            Blogs
+          </Typography>
+      </Box>
+      <Carousel
+        showStatus={false}
+        showArrows={false}
+        emulateTouch
+        swipeable
+        infiniteLoop
+        autoPlay
+        interval={3000}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginBottom: '30px',
+          }}
+        >
+          {cslide1.map((each, i) => (
+            <BlogCard
+              title={each.title}
+              content={each.content}
+              bimage={each.blogimg}
+              key={i}
+            />
+          ))}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginBottom: '30px',
+          }}
+        >
+          {cslide2.map((each, i) => (
+            <BlogCard
+              title={each.title}
+              content={each.content}
+              bimage={each.blogimg}
+              key={i}
+            />
+          ))}
+        </div>
+      </Carousel>
+    </>
   )
 }
 

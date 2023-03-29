@@ -3,7 +3,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Button, CardActionArea, CardActions, Grid } from '@mui/material'
+import { Button,CardActions, Grid } from '@mui/material'
 import img from './assets/Group 11.svg'
 export default function MultiActionAreaCard() {
   return (
