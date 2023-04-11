@@ -6,6 +6,7 @@ import BlogCarousel from './BlogCarousel';
 import AboutUs from './About Us';
 import MeetOurDoctors from './MeetOurDoctors.js'
 import Footer from './Footer.js'
+import BookAppointment from './BookAppointment';
 import { createTheme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react';
 import CustomizedTables from "./CustomizedTables";
@@ -29,7 +30,6 @@ class App extends Component{
 <AboutUs/>
 <MeetOurDoctors/>
 <BlogCarousel/>
-{/* <CustomizedTables/> */}
 <Footer/>
 </Auth0Provider>
 </ThemeProvider>
