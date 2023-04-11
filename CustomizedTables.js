@@ -52,11 +52,7 @@ const rows1 = [
 export default function CustomizedTables() {
   return (
     <>
-      
-      
-
-
-      <Grid container spacing={2}>
+        <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
         <TableContainer component={Paper}><h2 style={{textAlign: 'center'}}>Past Medical Records</h2>
           <Table sx={{ maxWidth: '89%', m: 4 }} aria-label="customized table">

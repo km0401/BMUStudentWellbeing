@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Header from "./Header";
 import HeroBanner from './HeroBanner';
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -8,6 +8,7 @@ import MeetOurDoctors from './MeetOurDoctors.js'
 import Footer from './Footer.js'
 import { createTheme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react';
+import CustomizedTables from "./CustomizedTables";
 
 const theme = createTheme({
   typography: {
@@ -28,6 +29,7 @@ class App extends Component{
 <AboutUs/>
 <MeetOurDoctors/>
 <BlogCarousel/>
+{/* <CustomizedTables/> */}
 <Footer/>
 </Auth0Provider>
 </ThemeProvider>

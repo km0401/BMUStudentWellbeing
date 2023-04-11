@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Button,CardActions, Grid } from '@mui/material'
-import img from './assets/Group 11.svg'
+import img from './assets/Trehan.jpg'
 export default function MultiActionAreaCard() {
   return (
     <Card sx={{ maxWidth: 600,marginLeft:10}}>
@@ -12,8 +12,8 @@ export default function MultiActionAreaCard() {
         <Grid item style={{width:380}}>
           <CardMedia
             component='img'
-            height='345'
-            width='600'
+            // height='345'
+            // width='600'
             image={img}
             alt='green iguana'
           />
@@ -25,7 +25,7 @@ export default function MultiActionAreaCard() {
               Lizard
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              Lizards are a widespread group of squamate reptiles, with over
+              Li are a widespread group of squamate reptiles, with over
               6,000 species, ranging across all continents except Antarctica
             </Typography>
           </CardContent>
