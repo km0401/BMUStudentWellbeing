@@ -6,7 +6,7 @@ import BlogCarousel from './BlogCarousel';
 import AboutUs from './About Us';
 import MeetOurDoctors from './MeetOurDoctors.js'
 import Footer from './Footer.js'
-
+import BookAppointment from './BookAppointment';
 import { createTheme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
 const theme = createTheme({
@@ -28,6 +28,7 @@ class App extends Component{
 <AboutUs/>
 <MeetOurDoctors/>
 <BlogCarousel/>
+<BookAppointment/>
 <Footer/>
 </Auth0Provider>
 </ThemeProvider>

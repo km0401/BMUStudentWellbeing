@@ -3,13 +3,13 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Button,CardActions, Grid } from '@mui/material'
-import img from './assets/Group 11.svg'
+import { Button, CardActions, Grid } from '@mui/material'
+import img from './assets/doctor1.jpg'
 export default function MultiActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 600,marginLeft:10}}>
+    <Card sx={{ maxWidth: 600, marginLeft: 10 }}>
       <Grid container spacing={2}>
-        <Grid item style={{width:380}}>
+        <Grid item style={{ width: 380 }}>
           <CardMedia
             component='img'
             height='345'
@@ -38,4 +38,4 @@ export default function MultiActionAreaCard() {
       </Grid>
     </Card>
   )
-};
+}
