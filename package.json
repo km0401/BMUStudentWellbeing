@@ -11,8 +11,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "chartjs": "^0.3.24",
     "react": "^18.2.0",
+<<<<<<< HEAD
     "react-calendly": "^4.1.1",
+=======
+    "react-chartjs-2": "^5.2.0",
+>>>>>>> b38cfd0363223efaee16b7d3d0893b599c1c5473
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-responsive-carousel": "^3.2.23",

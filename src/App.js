@@ -8,7 +8,9 @@ import MeetOurDoctors from './MeetOurDoctors.js'
 import Footer from './Footer.js'
 import BookAppointment from './BookAppointment';
 import { createTheme } from '@mui/material'
-import { ThemeProvider } from '@emotion/react'
+import { ThemeProvider } from '@emotion/react';
+import CustomizedTables from "./CustomizedTables";
+
 const theme = createTheme({
   typography: {
     fontFamily: 'Poppins',
@@ -26,9 +28,10 @@ class App extends Component{
 <Header/>
 <HeroBanner/>
 <AboutUs/>
+<BookAppointment/>
 <MeetOurDoctors/>
 <BlogCarousel/>
-<BookAppointment/>
+<CustomizedTables/>
 <Footer/>
 </Auth0Provider>
 </ThemeProvider>

@@ -23,8 +23,13 @@ function MeetOurDoctors(){
           </Grid>
           <Grid item>
             <DoctorCardUsingFlex
+<<<<<<< HEAD
               doctorImage={img2}
               doctorName={'Dr. Jaspal Bhatia'}
+=======
+              doctorImage={img}
+              doctorName={'Dr. Rupa Murghai'}
+>>>>>>> b38cfd0363223efaee16b7d3d0893b599c1c5473
               designation={
                 'Lizards are a widespread group of squamate reptiles, with over, 6,000 species, ranging across all continents except Antarctica'
               }
@@ -32,8 +37,13 @@ function MeetOurDoctors(){
           </Grid>
           <Grid item>
             <DoctorCardUsingFlex
+<<<<<<< HEAD
               doctorImage={img3}
               doctorName={'Dr. Jaspal Bhatia'}
+=======
+              doctorImage={img}
+              doctorName={'Dr. Pankaj Suneja'}
+>>>>>>> b38cfd0363223efaee16b7d3d0893b599c1c5473
               designation={
                 'Lizards are a widespread group of squamate reptiles, with over, 6,000 species, ranging across all continents except Antarctica'
               }
