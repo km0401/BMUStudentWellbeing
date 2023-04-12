@@ -28,8 +28,10 @@ class App extends Component{
 <Header/>
 <HeroBanner/>
 <AboutUs/>
+<BookAppointment/>
 <MeetOurDoctors/>
 <BlogCarousel/>
+<CustomizedTables/>
 <Footer/>
 </Auth0Provider>
 </ThemeProvider>
