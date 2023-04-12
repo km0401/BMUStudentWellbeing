@@ -1,6 +1,8 @@
 import * as React from 'react'
 import DoctorCardUsingFlex from './DoctorCardUsingFlex.js'
-import img from './assets/Group 11.svg'
+import img1 from './assets/d1.jpg'
+import img2 from './assets/d2.jpg'
+import img3 from './assets/d3.jpg'
 import {Grid} from '@mui/material'
 import Typography from '@mui/material/Typography'
 function MeetOurDoctors(){
@@ -12,7 +14,7 @@ function MeetOurDoctors(){
         <Grid container={3} spacing={3} justifyContent='space-around'>
           <Grid item>
             <DoctorCardUsingFlex
-              doctorImage={img}
+              doctorImage={img1}
               doctorName={'Dr. Jaspal Bhatia'}
               designation={
                 'Lizards are a widespread group of squamate reptiles, with over, 6,000 species, ranging across all continents except Antarctica'
@@ -21,7 +23,7 @@ function MeetOurDoctors(){
           </Grid>
           <Grid item>
             <DoctorCardUsingFlex
-              doctorImage={img}
+              doctorImage={img2}
               doctorName={'Dr. Jaspal Bhatia'}
               designation={
                 'Lizards are a widespread group of squamate reptiles, with over, 6,000 species, ranging across all continents except Antarctica'
@@ -30,7 +32,7 @@ function MeetOurDoctors(){
           </Grid>
           <Grid item>
             <DoctorCardUsingFlex
-              doctorImage={img}
+              doctorImage={img3}
               doctorName={'Dr. Jaspal Bhatia'}
               designation={
                 'Lizards are a widespread group of squamate reptiles, with over, 6,000 species, ranging across all continents except Antarctica'
