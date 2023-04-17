@@ -5,12 +5,6 @@ import BlogCard from './BlogCard';
 import blogimage1 from "./assets/download (1).jpg";
 import blogimage2 from "./assets/download (2).jpg";
 import blogimage3 from "./assets/download (3).jpg";
-import blogimage4 from "./assets/download (4).jpg";
-import blogimage5 from "./assets/download (5).jpg";
-import blogimage6 from "./assets/download (6).jpg";
-import blogimage7 from "./assets/download (7).jpg";
-import blogimage8 from "./assets/download (8).jpg";
-import blogimage9 from "./assets/download (9).jpg";
 import {Typography,Box} from '@mui/material'
 
 
