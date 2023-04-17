@@ -9,7 +9,7 @@ import Footer from './Footer.js'
 import BookAppointment from './BookAppointment';
 import { createTheme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react';
-import CustomizedTables from "./CustomizedTables";
+// import CustomizedTables from "./CustomizedTables";
 
 const theme = createTheme({
   typography: {
@@ -31,7 +31,7 @@ class App extends Component{
 <BookAppointment/>
 <MeetOurDoctors/>
 <BlogCarousel/>
-<CustomizedTables/>
+{/* <CustomizedTables/> */}
 <Footer/>
 </Auth0Provider>
 </ThemeProvider>
