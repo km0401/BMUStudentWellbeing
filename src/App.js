@@ -7,11 +7,12 @@ import CalendlyWD from './Pages/CalendlyBookingWD'
 const App = () => {
   return (
     <>
-      <Routes>
-        <Route path='/' element={<Home />} />
+      {/* <Routes>
+        <Route path='/' element={<Home />} /> 
         <Route path='/book1' element={<CalendlyMD />} />
         <Route path='/book2' element={<CalendlyWD />} />
-      </Routes>
+      </Routes> */}
+      <Home/>
     </>
   )
 }

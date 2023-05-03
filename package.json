@@ -14,14 +14,12 @@
     "chartjs": "^0.3.24",
     "react": "^18.2.0",
     "react-calendly": "^4.1.1",
-<<<<<<< HEAD
-=======
     "react-chartjs-2": "^5.2.0",
->>>>>>> 395e1f53819d819ea565c4fbb15314e78023b102
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.10.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
