@@ -58,9 +58,9 @@ function BookAppointment() {
       </Box>
       <Grid
         container
-        rowSpacing={1}
+        rowSpacing={5}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        style={{ marginTop: 30,marginBottom:30 }}
+        style={{ marginTop: 30,marginBottom:30, display:'flex',justifyContent:'space-around'}}
       >
         <Grid item xs={6} md={6}>
           <TextField
