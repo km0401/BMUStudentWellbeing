@@ -1,7 +1,8 @@
 import {Grid, TextField, MenuItem } from '@mui/material'
 import { Typography, Box, Button} from '@mui/material'
 import { styled } from '@mui/system';
-import { PopupWidget } from 'react-calendly';
+import { useState } from "react";
+import { useHistory, useNavigate} from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import React from 'react'
 const doctors = [
@@ -17,20 +18,6 @@ const doctors = [
 ]
 
 const theme = createTheme({ 
-  palette: {
-    primary: {
-      main: "#ffffff",
-    },
-    secondary: {
-      main: "#907BFF",
-    },
-    tertiary:{
-        main:"#E5ECFA",
-    },
-    accent:{
-      main:"#000000",
-    }
-  }, 
   typography: {
     fontFamily:'Poppins',
     button: {
@@ -47,8 +34,21 @@ const BootstrapButton = styled(Button)({
   });
 
 function BookAppointment() {
+  const [selectedValue, setSelectedValue] = useState("");
+  // const history = useHistory();
+  const navigate = useNavigate();
+
+  const handleRouting = (event) =>{
+    event.preventDefault();
+    if (selectedValue === "Dr. Jaspal Bhatia") {
+      navigate('/book1');
+    } else if (selectedValue !== "Dr. Jaspal Bhatia") {
+      navigate('/book2');
+    }
+  }
   return (
     <ThemeProvider theme={theme}>
+    {/* <> */}
       <Box>
         <Typography
           variant='h4'
@@ -59,7 +59,7 @@ function BookAppointment() {
       </Box>
       <Grid
         container
-        rowSpacing={5}
+        rowSpacing={2}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         style={{ marginTop: 30,marginBottom:30, display:'flex',justifyContent:'space-around'}}
       >
@@ -73,7 +73,6 @@ function BookAppointment() {
         </Grid>
         <Grid item xs={6} md={6}>
           <TextField
-            id='outlined-basic'
             label='Enrollment No.'
             variant='outlined'
             style={{ marginLeft: 100, paddingBottom: 30, width: 400 }}
@@ -109,6 +108,8 @@ function BookAppointment() {
             select
             label='Select'
             defaultValue='Dr. Jaspal Bhatia'
+            value={selectedValue}
+            onChange ={e => setSelectedValue(e.target.value)}
             variant='outlined'
             style={{ marginLeft: 100, paddingBottom: 30, width: 400 }}
           >
@@ -120,9 +121,10 @@ function BookAppointment() {
           </TextField>
         </Grid>
         <Grid item xs={12} sx={{display:'flex',justifyContent:'center'}}>
-        <BootstrapButton variant="contained" size="small" color="secondary">Book Consultation Now</BootstrapButton>
+        <BootstrapButton onClick={handleRouting} variant="contained" size="small" color="secondary">Book Consultation Now</BootstrapButton>
         </Grid>
       </Grid>
+      {/* </> */}
       </ThemeProvider>
   )
 }

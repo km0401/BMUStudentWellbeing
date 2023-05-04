@@ -9,7 +9,6 @@ import Footer from '../Footer.js'
 import BookAppointment from '../BookAppointment'
 import { createTheme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
-import Calendly from '../Calendly'
 // import CustomizedTables from "./CustomizedTables";
 
 const theme = createTheme({
@@ -34,7 +33,6 @@ class Home extends Component {
           <BookAppointment />
           <MeetOurDoctors />
           <BlogCarousel />
-          <Calendly />
           <Footer />
         </Auth0Provider>
       </ThemeProvider>
