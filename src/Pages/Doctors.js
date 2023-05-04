@@ -3,8 +3,6 @@ import { UserData, UserData1 } from "../Data";
 import DoughnutChart from "../DoughnutChart";
 import BarChart from "../BarChart";
 import Header from "../Header";
-import Table from "../Table.js";
-import Table2 from "../Table2.js";
 import StudentAppointment from "../StudentAppointment";
 import GoogleCalendar from "../GoogleCalendar";
 
@@ -65,7 +63,7 @@ function Doctors() {
         <h1>Pharmacy Orders</h1>
         <BarChart chartData={userData1} />
       </div>
-      <div style={{ width: 310, marginRight:'70px'}}>
+      <div style={{ width: 310, marginRight:'70px', textAlign:'left'}}>
         <h1>Medicinal Supplies</h1>
         <DoughnutChart chartData={userData} />
       </div>

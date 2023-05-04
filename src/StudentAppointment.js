@@ -14,6 +14,19 @@ function StudentAppointment() {
   const [appointments, setAppointments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const getColor = (date) => {
+    const currentDate = new Date();
+    // const currentTime = currentDate.toLocaleTimeString();
+    const appointmentDate = new Date(date);
+    if (appointmentDate.toDateString() === currentDate.toDateString()) {
+      return "#B3E5FC"; // Light blue color for current date
+    } else if (appointmentDate < currentDate) {
+      return "#FFCDD2"; // Red color for past dates
+    } else {
+      return "#C8E6C9"; // Green color for future dates
+    }
+  };
+
   const fetchInvitee = async (appointment) => {
     try {
       const response = await fetch(`${appointment.uri}/invitees?fields=email,name`, {
@@ -86,13 +99,13 @@ function StudentAppointment() {
                 key={appointment.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row" sx={{ color: '#000000', fontSize:'15px' }}>
+                <TableCell component="th" scope="row" sx={{ backgroundColor: getColor(appointment.start_time), fontSize:'15px' }}>
                   {appointment.invitee}
                 </TableCell>
-                <TableCell sx={{ color: '#000000', fontSize:'15px' }}>
+                <TableCell sx={{ backgroundColor: getColor(appointment.start_time), fontSize:'15px' }}>
                 {new Date(appointment.start_time).toLocaleDateString()}
                 </TableCell>
-                <TableCell sx={{ color: '#000000', fontSize:'15px' }}>{new Date(appointment.start_time).toLocaleTimeString([], {
+                <TableCell sx={{ backgroundColor: getColor(appointment.start_time), fontSize:'15px' }}>{new Date(appointment.start_time).toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}</TableCell>
