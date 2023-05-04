@@ -34,8 +34,8 @@ const LineChart = () => {
 return (
   <>
   <Box sx={{ m: 3 }}>
-  <Typography varient="h2"><b>Checkups per Month</b></Typography>
-  <Grid container justifyContent="flex-start" maxWidth="sm">
+  <Typography variant="h2"><b>Checkups per Month</b></Typography>
+  <Grid container justifyContent="flex-start">
     <Line data={data} options={options} />
   </Grid>
   </Box>

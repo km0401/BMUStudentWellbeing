@@ -44,35 +44,38 @@ function StudentAppointment() {
     }
   };
 
-  useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await fetch(
-          "https://api.calendly.com/scheduled_events?user=https://api.calendly.com/users/9f147f18-cca8-4b4c-8ee5-57da13faf1c1&status=active&include=invitee",
-          {
-            headers: {
-              authorization: "Bearer eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjgzMTc4NTE3LCJqdGkiOiI1NGYyMzQyYy0yOGQ5LTQ4NDQtYjgxYi01MmY5OTZjNDU1NWMiLCJ1c2VyX3V1aWQiOiI5ZjE0N2YxOC1jY2E4LTRiNGMtOGVlNS01N2RhMTNmYWYxYzEifQ.ldB2petcYCLrW2VNfLDNbkA6K8n2AAxa1_7lIDVei8Z4HsbYb9xKil0c6GOJQnwn6qRIDwI6z9QOfWzywieAMQ",
-              "content-type": "application/json",
-            },
-            method: "GET",
-          }
-        );
-        const data = await response.json();
-        const appointmentsWithInvitees = await Promise.all(
-          data.collection.map(async (appointment) => {
-            const updatedAppointment = await fetchInvitee(appointment);
-            return updatedAppointment;
-          })
-        );
-        setAppointments(appointmentsWithInvitees);
-        setIsLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchAppointments();
-  }, []);
+  const fetchAppointments = async () => {
+    try {
+      const response = await fetch(
+        "https://api.calendly.com/scheduled_events?user=https://api.calendly.com/users/9f147f18-cca8-4b4c-8ee5-57da13faf1c1&status=active&include=invitee",
+        {
+          headers: {
+            authorization: "Bearer eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjgzMTc4NTE3LCJqdGkiOiI1NGYyMzQyYy0yOGQ5LTQ4NDQtYjgxYi01MmY5OTZjNDU1NWMiLCJ1c2VyX3V1aWQiOiI5ZjE0N2YxOC1jY2E4LTRiNGMtOGVlNS01N2RhMTNmYWYxYzEifQ.ldB2petcYCLrW2VNfLDNbkA6K8n2AAxa1_7lIDVei8Z4HsbYb9xKil0c6GOJQnwn6qRIDwI6z9QOfWzywieAMQ",
+            "content-type": "application/json",
+          },
+          method: "GET",
+        }
+      );
+      const data = await response.json();
+      const appointmentsWithInvitees = await Promise.all(
+        data.collection.map(async (appointment) => {
+          const updatedAppointment = await fetchInvitee(appointment);
+          return updatedAppointment;
+        })
+      );
+      appointmentsWithInvitees.sort((a, b) => {
+        const aTime = new Date(a.start_time);
+        const bTime = new Date(b.start_time);
+        return aTime - bTime;
+      });
+      setAppointments(appointmentsWithInvitees);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  fetchAppointments();
+  
 
   if (isLoading) {
     return (
@@ -103,7 +106,7 @@ function StudentAppointment() {
                   {appointment.invitee}
                 </TableCell>
                 <TableCell sx={{ backgroundColor: getColor(appointment.start_time), fontSize:'15px' }}>
-                {new Date(appointment.start_time).toLocaleDateString()}
+                {new Date(appointment.start_time).toLocaleDateString('en-GB')}
                 </TableCell>
                 <TableCell sx={{ backgroundColor: getColor(appointment.start_time), fontSize:'15px' }}>{new Date(appointment.start_time).toLocaleTimeString([], {
                   hour: "2-digit",
