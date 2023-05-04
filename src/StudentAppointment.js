@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import {
   Table,
   TableBody,
@@ -15,24 +14,44 @@ function StudentAppointment() {
   const [appointments, setAppointments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const fetchInvitee = async (appointment) => {
+    try {
+      const response = await fetch(`${appointment.uri}/invitees?fields=email,name`, {
+        headers: {
+          authorization: "Bearer eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjgzMTc4NTE3LCJqdGkiOiI1NGYyMzQyYy0yOGQ5LTQ4NDQtYjgxYi01MmY5OTZjNDU1NWMiLCJ1c2VyX3V1aWQiOiI5ZjE0N2YxOC1jY2E4LTRiNGMtOGVlNS01N2RhMTNmYWYxYzEifQ.ldB2petcYCLrW2VNfLDNbkA6K8n2AAxa1_7lIDVei8Z4HsbYb9xKil0c6GOJQnwn6qRIDwI6z9QOfWzywieAMQ",
+          "content-type": "application/json",
+        },
+        method: "GET",
+      });
+      const data = await response.json();
+      return { ...appointment, invitee: data.collection[0].name };
+    } catch (error) {
+      console.error(error);
+      return appointment;
+    }
+  };
+
   useEffect(() => {
     const fetchAppointments = async () => {
-        console.log('fetchingAppointment')
       try {
-        console.log('try block')
-        const response = await axios.get(
-          "https://api.calendly.com/scheduled_events",
+        const response = await fetch(
+          "https://api.calendly.com/scheduled_events?user=https://api.calendly.com/users/9f147f18-cca8-4b4c-8ee5-57da13faf1c1&status=active&include=invitee",
           {
             headers: {
-              Authorization: "Bearer eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjgzMTc4NTE3LCJqdGkiOiI1NGYyMzQyYy0yOGQ5LTQ4NDQtYjgxYi01MmY5OTZjNDU1NWMiLCJ1c2VyX3V1aWQiOiI5ZjE0N2YxOC1jY2E4LTRiNGMtOGVlNS01N2RhMTNmYWYxYzEifQ.ldB2petcYCLrW2VNfLDNbkA6K8n2AAxa1_7lIDVei8Z4HsbYb9xKil0c6GOJQnwn6qRIDwI6z9QOfWzywieAMQ",
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-
+              authorization: "Bearer eyJraWQiOiIxY2UxZTEzNjE3ZGNmNzY2YjNjZWJjY2Y4ZGM1YmFmYThhNjVlNjg0MDIzZjdjMzJiZTgzNDliMjM4MDEzNWI0IiwidHlwIjoiUEFUIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJodHRwczovL2F1dGguY2FsZW5kbHkuY29tIiwiaWF0IjoxNjgzMTc4NTE3LCJqdGkiOiI1NGYyMzQyYy0yOGQ5LTQ4NDQtYjgxYi01MmY5OTZjNDU1NWMiLCJ1c2VyX3V1aWQiOiI5ZjE0N2YxOC1jY2E4LTRiNGMtOGVlNS01N2RhMTNmYWYxYzEifQ.ldB2petcYCLrW2VNfLDNbkA6K8n2AAxa1_7lIDVei8Z4HsbYb9xKil0c6GOJQnwn6qRIDwI6z9QOfWzywieAMQ",
+              "content-type": "application/json",
             },
+            method: "GET",
           }
         );
-        console.log('get request sent')
-        setAppointments(response.data.collection);
+        const data = await response.json();
+        const appointmentsWithInvitees = await Promise.all(
+          data.collection.map(async (appointment) => {
+            const updatedAppointment = await fetchInvitee(appointment);
+            return updatedAppointment;
+          })
+        );
+        setAppointments(appointmentsWithInvitees);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -43,40 +62,47 @@ function StudentAppointment() {
   }, []);
 
   if (isLoading) {
-    return <CircularProgress />;
+    return (
+      <>
+        <CircularProgress />
+      </>
+    );
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="appointments table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Invitee Name</TableCell>
-            <TableCell align="right">Meeting Time</TableCell>
-            <TableCell align="right">Meeting Date</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {appointments.map((appointment) => (
-            <TableRow key={appointment.uuid}>
-              <TableCell component="th" scope="row">
-                {appointment.invitee.name}
-              </TableCell>
-              <TableCell align="right">
-                {new Date(appointment.start_time).toLocaleTimeString([], {
+    <>
+      <TableContainer component={Paper} sx={{width:400}}>
+        <Table sx={{ width: 400 }} aria-label="appointments table">
+          <TableHead>
+            <TableRow style={{ backgroundColor: '#00BFA5' }}>
+              <TableCell style={{ color: '#FFFFFF' , fontSize:'15px'}}>Invitee Name</TableCell>
+              <TableCell style={{ color: '#FFFFFF' , fontSize:'15px'}}>Meeting Date</TableCell>
+              <TableCell style={{ color: '#FFFFFF' , fontSize:'15px'}}>Meeting Time</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {appointments.map((appointment) => (
+              <TableRow
+                key={appointment.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row" sx={{ color: '#000000', fontSize:'15px' }}>
+                  {appointment.invitee}
+                </TableCell>
+                <TableCell sx={{ color: '#000000', fontSize:'15px' }}>
+                {new Date(appointment.start_time).toLocaleDateString()}
+                </TableCell>
+                <TableCell sx={{ color: '#000000', fontSize:'15px' }}>{new Date(appointment.start_time).toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
-                })}
-              </TableCell>
-              <TableCell align="right">
-                {new Date(appointment.start_time).toLocaleDateString()}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                })}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
 
-export default StudentAppointment;
+  export default StudentAppointment

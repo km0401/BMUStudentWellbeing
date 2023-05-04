@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import Doctor from './Pages/Doctor'
 import CalendlyMD from './Pages/CalendlyBookingMD'
 import CalendlyWD from './Pages/CalendlyBookingWD'
+import Doctors from './Pages/Doctors'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/book1' element={<CalendlyMD />} />
         <Route path='/book2' element={<CalendlyWD />} />
         <Route path='/doctor' element={<Doctor/>}/>
+        <Route path='/doctors' element={<Doctors/>}/>
       </Routes>
       {/* <Home/> */}
     </>
